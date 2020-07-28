@@ -3,46 +3,55 @@ using System;
 namespace ShadowSeedFinder
 {
     class Program
-    {
+    {   
         static void Main(string[] args)
         {
-           
-            Function();
+           Console.Title = "Shadow Seed Finder";
+           Function();
            
         }
 
         static void Function()
         {
 
-            Console.WriteLine("Enter the seed to find the shadow of:");
+            Console.WriteLine("Enter seed:");
             string input = Console.ReadLine();
             try
             {
                 long seed = long.Parse(input);
                 long test = -7379792620528906219;
                 long shadow = test - seed;
-                Console.WriteLine("This is a test function. The seed you entered was  " + seed);
+                Console.WriteLine("The seed you entered was " + seed);
                 Console.WriteLine("The approximate shadow seed is: " + shadow);
-                Console.WriteLine("Do you want to enter another seed? [Yes/No]");
+                Console.WriteLine("Do you want to enter another seed? [Y/N]");
                 string response = Console.ReadLine();
 
-                if (response.Contains("y"))
+                if (response.Contains("Y"))
                 {
-
+                    Console.Clear();
                     Main(null);
 
                 }
-                else
-                {
+                else if (response.Contains("N"))
+                {   
+                    Console.Clear();
+                    Console.Write("Press any key to exit.");
+                    Console.ReadKey();
+                } 
+                else {
 
-                    Console.Write("Goodbye....");
-
+                    Console.Clear();
+                    Console.Write("Press any key to exit.");
+                    Console.ReadKey();
                 }
                 
             }
             catch (FormatException)
             {
-                Console.WriteLine($"Unable to parse '{input}' try again with a proper seed next time");
+                Console.WriteLine($"Unable to parse \"{input}\".");
+                Console.ReadKey();
+                Console.Clear();
+                Main(null);
             }
 
         }
